@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+      type: frontend
+  template:
+    metadata:
+      name: my-pod
+      labels:
+        app: my-app
+        type: frontend
+    spec:
+      containers:
+      - name: tg-redirect
+        image: prajapatdip/tg-redirect:1.0
+        ports:
+        - containerPort: 8081
